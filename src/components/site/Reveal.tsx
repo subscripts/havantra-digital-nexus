@@ -25,7 +25,7 @@ export function Reveal({
     }
     const obs = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry?.isIntersecting) {
           setShown(true);
           obs.disconnect();
         }
