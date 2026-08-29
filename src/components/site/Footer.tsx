@@ -60,7 +60,7 @@ export function Footer() {
                   {col.links.map(({ label, ...linkProps }) => (
                     <li key={label}>
                       <Link
-                        {...(linkProps as never)}
+                        {...(linkProps as Record<string, unknown>)}
                         className="link-underline text-sm text-muted-foreground hover:text-foreground"
                       >
                         {label}
