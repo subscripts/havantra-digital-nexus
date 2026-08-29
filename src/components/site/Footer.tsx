@@ -57,16 +57,13 @@ export function Footer() {
               <nav key={col.title} aria-label={col.title}>
                 <p className="eyebrow mb-4">{col.title}</p>
                 <ul className="space-y-3">
-                  {col.links.map((link) => (
-                    <li key={link.label}>
+                  {col.links.map(({ label, ...linkProps }) => (
+                    <li key={label}>
                       <Link
-                        to={link.to}
-                        params={(link as { params?: Record<string, string> }).params}
-                        hash={(link as { hash?: string }).hash}
-                        search={(link as { search?: Record<string, string> }).search}
+                        {...(linkProps as Record<string, unknown>)}
                         className="link-underline text-sm text-muted-foreground hover:text-foreground"
                       >
-                        {link.label}
+                        {label}
                       </Link>
                     </li>
                   ))}
