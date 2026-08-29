@@ -9,9 +9,10 @@ import { cn } from "@/lib/utils";
 type Search = { category?: string };
 
 export const Route = createFileRoute("/insights/")({
-  validateSearch: (search: Record<string, unknown>): Search => ({
-    category: typeof search.category === "string" ? search.category : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): Search => {
+    const category = search["category"];
+    return typeof category === "string" ? { category } : {};
+  },
   head: () => ({
     meta: [
       { title: "Insights — Business, Marketing & Technology | Havantra" },

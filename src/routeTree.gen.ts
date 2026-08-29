@@ -10,7 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as CareersRouteImport } from './routes/careers'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as SolutionsRouteImport } from './routes/solutions'
+import { Route as InsightsIndexRouteImport } from './routes/insights.index'
+import { Route as InsightsSlugRouteImport } from './routes/insights.$slug'
+import { Route as InsightsResourcesRouteImport } from './routes/insights.resources'
 import { Route as ProductsIndexRouteImport } from './routes/products.index'
 import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
 import { Route as WorkIndexRouteImport } from './routes/work.index'
@@ -21,9 +27,39 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SolutionsRoute = SolutionsRouteImport.update({
   id: '/solutions',
   path: '/solutions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsIndexRoute = InsightsIndexRouteImport.update({
+  id: '/insights/',
+  path: '/insights/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsSlugRoute = InsightsSlugRouteImport.update({
+  id: '/insights/$slug',
+  path: '/insights/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InsightsResourcesRoute = InsightsResourcesRouteImport.update({
+  id: '/insights/resources',
+  path: '/insights/resources',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProductsIndexRoute = ProductsIndexRouteImport.update({
@@ -49,26 +85,44 @@ const WorkSlugRoute = WorkSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
   '/solutions': typeof SolutionsRoute
+  '/insights/$slug': typeof InsightsSlugRoute
+  '/insights/resources': typeof InsightsResourcesRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/insights/': typeof InsightsIndexRoute
   '/products/': typeof ProductsIndexRoute
   '/work/': typeof WorkIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
   '/solutions': typeof SolutionsRoute
+  '/insights/$slug': typeof InsightsSlugRoute
+  '/insights/resources': typeof InsightsResourcesRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/insights': typeof InsightsIndexRoute
   '/products': typeof ProductsIndexRoute
   '/work': typeof WorkIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
   '/solutions': typeof SolutionsRoute
+  '/insights/$slug': typeof InsightsSlugRoute
+  '/insights/resources': typeof InsightsResourcesRoute
   '/products/$slug': typeof ProductsSlugRoute
   '/work/$slug': typeof WorkSlugRoute
+  '/insights/': typeof InsightsIndexRoute
   '/products/': typeof ProductsIndexRoute
   '/work/': typeof WorkIndexRoute
 }
@@ -76,34 +130,58 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
+    | '/careers'
+    | '/contact'
     | '/solutions'
+    | '/insights/$slug'
+    | '/insights/resources'
     | '/products/$slug'
     | '/work/$slug'
+    | '/insights/'
     | '/products/'
     | '/work/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
+    | '/careers'
+    | '/contact'
     | '/solutions'
+    | '/insights/$slug'
+    | '/insights/resources'
     | '/products/$slug'
     | '/work/$slug'
+    | '/insights'
     | '/products'
     | '/work'
   id:
     | '__root__'
     | '/'
+    | '/about'
+    | '/careers'
+    | '/contact'
     | '/solutions'
+    | '/insights/$slug'
+    | '/insights/resources'
     | '/products/$slug'
     | '/work/$slug'
+    | '/insights/'
     | '/products/'
     | '/work/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  CareersRoute: typeof CareersRoute
+  ContactRoute: typeof ContactRoute
   SolutionsRoute: typeof SolutionsRoute
+  InsightsSlugRoute: typeof InsightsSlugRoute
+  InsightsResourcesRoute: typeof InsightsResourcesRoute
   ProductsSlugRoute: typeof ProductsSlugRoute
   WorkSlugRoute: typeof WorkSlugRoute
+  InsightsIndexRoute: typeof InsightsIndexRoute
   ProductsIndexRoute: typeof ProductsIndexRoute
   WorkIndexRoute: typeof WorkIndexRoute
 }
@@ -117,11 +195,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/solutions': {
       id: '/solutions'
       path: '/solutions'
       fullPath: '/solutions'
       preLoaderRoute: typeof SolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights/': {
+      id: '/insights/'
+      path: '/insights'
+      fullPath: '/insights/'
+      preLoaderRoute: typeof InsightsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights/$slug': {
+      id: '/insights/$slug'
+      path: '/insights/$slug'
+      fullPath: '/insights/$slug'
+      preLoaderRoute: typeof InsightsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/insights/resources': {
+      id: '/insights/resources'
+      path: '/insights/resources'
+      fullPath: '/insights/resources'
+      preLoaderRoute: typeof InsightsResourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/products/': {
@@ -157,9 +277,15 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  CareersRoute: CareersRoute,
+  ContactRoute: ContactRoute,
   SolutionsRoute: SolutionsRoute,
+  InsightsSlugRoute: InsightsSlugRoute,
+  InsightsResourcesRoute: InsightsResourcesRoute,
   ProductsSlugRoute: ProductsSlugRoute,
   WorkSlugRoute: WorkSlugRoute,
+  InsightsIndexRoute: InsightsIndexRoute,
   ProductsIndexRoute: ProductsIndexRoute,
   WorkIndexRoute: WorkIndexRoute,
 }
