@@ -74,6 +74,72 @@ export type Database = {
         }
         Relationships: []
       }
+      case_studies: {
+        Row: {
+          approach: string
+          challenge: string
+          client: string
+          created_at: string
+          featured_image_url: string | null
+          id: string
+          industry: string
+          published_at: string | null
+          results: string[]
+          services: string[]
+          slug: string
+          solution: string
+          status: Database["public"]["Enums"]["post_status"]
+          summary: string
+          technologies: string[]
+          timeline: string | null
+          title: string
+          updated_at: string
+          year: string
+        }
+        Insert: {
+          approach?: string
+          challenge?: string
+          client: string
+          created_at?: string
+          featured_image_url?: string | null
+          id?: string
+          industry?: string
+          published_at?: string | null
+          results?: string[]
+          services?: string[]
+          slug: string
+          solution?: string
+          status?: Database["public"]["Enums"]["post_status"]
+          summary?: string
+          technologies?: string[]
+          timeline?: string | null
+          title: string
+          updated_at?: string
+          year?: string
+        }
+        Update: {
+          approach?: string
+          challenge?: string
+          client?: string
+          created_at?: string
+          featured_image_url?: string | null
+          id?: string
+          industry?: string
+          published_at?: string | null
+          results?: string[]
+          services?: string[]
+          slug?: string
+          solution?: string
+          status?: Database["public"]["Enums"]["post_status"]
+          summary?: string
+          technologies?: string[]
+          timeline?: string | null
+          title?: string
+          updated_at?: string
+          year?: string
+        }
+        Relationships: []
+      }
       job_applications: {
         Row: {
           cover_letter: string | null
@@ -131,6 +197,48 @@ export type Database = {
         }
         Relationships: []
       }
+      jobs: {
+        Row: {
+          created_at: string
+          department: string
+          description: string
+          id: string
+          is_open: boolean
+          location: string
+          slug: string
+          summary: string
+          title: string
+          type: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          department: string
+          description?: string
+          id?: string
+          is_open?: boolean
+          location?: string
+          slug: string
+          summary?: string
+          title: string
+          type?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          department?: string
+          description?: string
+          id?: string
+          is_open?: boolean
+          location?: string
+          slug?: string
+          summary?: string
+          title?: string
+          type?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       newsletter_subscribers: {
         Row: {
           created_at: string
@@ -160,6 +268,45 @@ export type Database = {
           name?: string | null
           source?: string
           unsubscribed_at?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      products: {
+        Row: {
+          created_at: string
+          description: string
+          features: string[]
+          id: string
+          is_published: boolean
+          name: string
+          slug: string
+          status_label: string
+          tagline: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string
+          features?: string[]
+          id?: string
+          is_published?: boolean
+          name: string
+          slug: string
+          status_label?: string
+          tagline?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          features?: string[]
+          id?: string
+          is_published?: boolean
+          name?: string
+          slug?: string
+          status_label?: string
+          tagline?: string
           updated_at?: string
         }
         Relationships: []
@@ -214,6 +361,42 @@ export type Database = {
           services?: string[]
           status?: Database["public"]["Enums"]["enquiry_status"]
           timeline?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      resources: {
+        Row: {
+          created_at: string
+          file_url: string | null
+          id: string
+          is_published: boolean
+          kind: string
+          slug: string
+          summary: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          file_url?: string | null
+          id?: string
+          is_published?: boolean
+          kind?: string
+          slug: string
+          summary?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          file_url?: string | null
+          id?: string
+          is_published?: boolean
+          kind?: string
+          slug?: string
+          summary?: string
+          title?: string
           updated_at?: string
         }
         Relationships: []
