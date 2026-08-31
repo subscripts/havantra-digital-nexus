@@ -65,12 +65,12 @@ export function Footer() {
                 <ul className="space-y-3">
                   {col.links.map(({ label, ...linkProps }) => (
                     <li key={label}>
-                      <Link
+                      <FooterLink
                         {...(linkProps as Record<string, unknown>)}
                         className="link-underline text-sm text-muted-foreground hover:text-foreground"
                       >
                         {label}
-                      </Link>
+                      </FooterLink>
                     </li>
                   ))}
                 </ul>
