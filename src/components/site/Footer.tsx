@@ -1,7 +1,13 @@
+import type { ComponentType, ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { site } from "@/content/site";
 import { Newsletter } from "./Newsletter";
 import { Wordmark } from "./Wordmark";
+
+/** Footer links mix plain, hash, search and param targets — loosen typing once here. */
+const FooterLink = Link as unknown as ComponentType<
+  Record<string, unknown> & { children?: ReactNode }
+>;
 
 const columns = [
   {
@@ -59,12 +65,12 @@ export function Footer() {
                 <ul className="space-y-3">
                   {col.links.map(({ label, ...linkProps }) => (
                     <li key={label}>
-                      <Link
+                      <FooterLink
                         {...(linkProps as Record<string, unknown>)}
                         className="link-underline text-sm text-muted-foreground hover:text-foreground"
                       >
                         {label}
-                      </Link>
+                      </FooterLink>
                     </li>
                   ))}
                 </ul>
