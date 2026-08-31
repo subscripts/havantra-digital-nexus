@@ -14,16 +14,261 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      blog_posts: {
+        Row: {
+          author_name: string
+          category: string
+          content: string
+          created_at: string
+          excerpt: string | null
+          featured_image_url: string | null
+          id: string
+          published_at: string | null
+          reading_time_minutes: number
+          seo_description: string | null
+          seo_title: string | null
+          slug: string
+          status: Database["public"]["Enums"]["post_status"]
+          subtitle: string | null
+          tags: string[]
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author_name?: string
+          category?: string
+          content?: string
+          created_at?: string
+          excerpt?: string | null
+          featured_image_url?: string | null
+          id?: string
+          published_at?: string | null
+          reading_time_minutes?: number
+          seo_description?: string | null
+          seo_title?: string | null
+          slug: string
+          status?: Database["public"]["Enums"]["post_status"]
+          subtitle?: string | null
+          tags?: string[]
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author_name?: string
+          category?: string
+          content?: string
+          created_at?: string
+          excerpt?: string | null
+          featured_image_url?: string | null
+          id?: string
+          published_at?: string | null
+          reading_time_minutes?: number
+          seo_description?: string | null
+          seo_title?: string | null
+          slug?: string
+          status?: Database["public"]["Enums"]["post_status"]
+          subtitle?: string | null
+          tags?: string[]
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      job_applications: {
+        Row: {
+          cover_letter: string | null
+          created_at: string
+          department: string | null
+          email: string
+          full_name: string
+          id: string
+          internal_notes: string | null
+          job_slug: string | null
+          job_title: string
+          linkedin_url: string | null
+          location: string | null
+          phone: string | null
+          portfolio_url: string | null
+          resume_url: string | null
+          status: Database["public"]["Enums"]["application_status"]
+          updated_at: string
+        }
+        Insert: {
+          cover_letter?: string | null
+          created_at?: string
+          department?: string | null
+          email: string
+          full_name: string
+          id?: string
+          internal_notes?: string | null
+          job_slug?: string | null
+          job_title: string
+          linkedin_url?: string | null
+          location?: string | null
+          phone?: string | null
+          portfolio_url?: string | null
+          resume_url?: string | null
+          status?: Database["public"]["Enums"]["application_status"]
+          updated_at?: string
+        }
+        Update: {
+          cover_letter?: string | null
+          created_at?: string
+          department?: string | null
+          email?: string
+          full_name?: string
+          id?: string
+          internal_notes?: string | null
+          job_slug?: string | null
+          job_title?: string
+          linkedin_url?: string | null
+          location?: string | null
+          phone?: string | null
+          portfolio_url?: string | null
+          resume_url?: string | null
+          status?: Database["public"]["Enums"]["application_status"]
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      newsletter_subscribers: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          is_subscribed: boolean
+          name: string | null
+          source: string
+          unsubscribed_at: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          is_subscribed?: boolean
+          name?: string | null
+          source?: string
+          unsubscribed_at?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          is_subscribed?: boolean
+          name?: string | null
+          source?: string
+          unsubscribed_at?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      project_enquiries: {
+        Row: {
+          budget_range: string | null
+          company: string | null
+          country: string | null
+          created_at: string
+          description: string
+          email: string
+          full_name: string
+          id: string
+          industry: string | null
+          internal_notes: string | null
+          phone: string | null
+          services: string[]
+          status: Database["public"]["Enums"]["enquiry_status"]
+          timeline: string | null
+          updated_at: string
+        }
+        Insert: {
+          budget_range?: string | null
+          company?: string | null
+          country?: string | null
+          created_at?: string
+          description?: string
+          email: string
+          full_name: string
+          id?: string
+          industry?: string | null
+          internal_notes?: string | null
+          phone?: string | null
+          services?: string[]
+          status?: Database["public"]["Enums"]["enquiry_status"]
+          timeline?: string | null
+          updated_at?: string
+        }
+        Update: {
+          budget_range?: string | null
+          company?: string | null
+          country?: string | null
+          created_at?: string
+          description?: string
+          email?: string
+          full_name?: string
+          id?: string
+          industry?: string | null
+          internal_notes?: string | null
+          phone?: string | null
+          services?: string[]
+          status?: Database["public"]["Enums"]["enquiry_status"]
+          timeline?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "editor" | "user"
+      application_status:
+        | "new"
+        | "reviewing"
+        | "interview"
+        | "offer"
+        | "hired"
+        | "rejected"
+      enquiry_status:
+        | "new"
+        | "contacted"
+        | "qualified"
+        | "won"
+        | "lost"
+        | "archived"
+      post_status: "draft" | "scheduled" | "published"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +395,25 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "editor", "user"],
+      application_status: [
+        "new",
+        "reviewing",
+        "interview",
+        "offer",
+        "hired",
+        "rejected",
+      ],
+      enquiry_status: [
+        "new",
+        "contacted",
+        "qualified",
+        "won",
+        "lost",
+        "archived",
+      ],
+      post_status: ["draft", "scheduled", "published"],
+    },
   },
 } as const
